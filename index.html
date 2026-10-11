@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Credit LAP Voice Agent</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SalesAgents AI Hiring Assignment</p>
+          <h1>Home Credit LAP Voice Agent</h1>
+        </div>
+        <span class="badge">Voice Eligibility Assistant</span>
+      </header>
+
+      <main class="layout-grid">
+        <section class="panel">
+          <h2>System prompt builder</h2>
+          <div class="field-grid">
+            <label>
+              Company name
+              <input id="companyName" value="Home Credit" />
+            </label>
+            <label>
+              Customer name
+              <input id="customerName" value="Riya Sharma" />
+            </label>
+            <label>
+              Agent name
+              <input id="agentName" value="Aisha" />
+            </label>
+            <label>
+              Agent gender
+              <select id="agentGender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="non-binary">Non-binary</option>
+              </select>
+            </label>
+            <label>
+              Language
+              <select id="language">
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+              </select>
+            </label>
+            <label>
+              Customer utterance
+              <textarea id="customerUtterance" rows="4">I own a residential flat, documents are ready, and I need a loan of 40 lakhs for 8 years. My income is credited to my bank account and I am salaried.</textarea>
+            </label>
+          </div>
+
+          <div class="button-row">
+            <button id="generatePromptBtn" type="button">Generate prompt</button>
+            <button id="simulateBtn" class="secondary" type="button">Run scenario</button>
+          </div>
+
+          <label class="stacked-label">
+            System prompt
+            <textarea id="systemPrompt" rows="26" readonly></textarea>
+          </label>
+
+          <div class="card integration-card">
+            <h3>Voice platform package</h3>
+            <div class="integration-controls">
+              <label>
+                Platform
+                <select id="provider">
+                  <option value="retell">Retell AI</option>
+                  <option value="bolna">Bolna</option>
+                </select>
+              </label>
+              <label>
+                Orchestrator URL
+                <input id="orchestratorUrl" readonly />
+              </label>
+            </div>
+            <div class="button-row">
+              <button id="generateIntegrationBtn" class="secondary" type="button">Build platform package</button>
+              <button id="copyIntegrationBtn" class="secondary" type="button">Copy package</button>
+            </div>
+            <p id="orchestratorHealth" class="service-status">Checking orchestrator…</p>
+            <label class="stacked-label">
+              Prompt + tool configuration
+              <textarea id="integrationPackage" rows="18" readonly></textarea>
+            </label>
+            <p class="integration-note">This package connects the voice platform to the local eligibility API. Configure a public HTTPS URL and your platform credentials before placing live calls.</p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Eligibility flow simulator</h2>
+          <div class="card">
+            <h3>Call status</h3>
+            <p id="callStatus" class="call-status">Waiting for prompt generation</p>
+          </div>
+
+          <div class="card">
+            <h3>Next required check</h3>
+            <p id="nextQuestion">-</p>
+          </div>
+
+          <div class="card">
+            <h3>State summary</h3>
+            <ul id="stateSummary" class="state-summary">
+              <li>Property type: Not captured</li>
+              <li>Ownership: Not captured</li>
+              <li>Documents: Not captured</li>
+              <li>Loan amount: Not captured</li>
+              <li>Occupation: Not captured</li>
+              <li>Income mode: Not captured</li>
+              <li>Market value: Not captured</li>
+              <li>Tenure: Not captured</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Conversation transcript</h3>
+            <ul id="transcript" class="transcript"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="orchestration.js"></script>
+  </body>
+</html>
